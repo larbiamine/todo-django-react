@@ -1,0 +1,1 @@
+web: gunicorn crudjangoapi.wsgi --log-file -
