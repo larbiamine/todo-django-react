@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^yc*nj6a-j*fze$*i^c@p=f)xa4p$m8$3rzm7@cg+bjt*58p4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',  'listodoo.herokuapp.com' ]
 
 
 # Application definition
@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'crudjangoapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "todo",
-        'USER': 'postgres',
-        'PASSWORD' : '1234',
-        'HOST' : 'localhost'
+        'NAME': "d725fnmp97uiec",
+        'USER': 'wdmnncvdlpmdit',
+        'PASSWORD' : '8f8b70935bc06a26c96a9713085521028f658f8b0e2ef7b648bac26e40617a38',
+        'HOST' : 'ec2-44-208-88-195.compute-1.amazonaws.com'
     }
 }
 
