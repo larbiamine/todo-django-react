@@ -25,7 +25,7 @@ class App extends React.Component {
   };
 
   componentWillMount(){
-   // this.fetchTasks()
+    this.fetchTasks()
   }
 
   fetchTasks(){
@@ -148,10 +148,10 @@ class App extends React.Component {
             <form onSubmit={this.handleSubmit} action="" id="form">
               <div className="flex-wrapper">
                 <div  style={{flex: 6}} >
-                  <input onChange={this.handleChange} type="text" className="form-control" id='title' value={this.state.activeItem.title} name='title' placeholder='Add Task' />
+                  <input onChange={this.handleChange} type="text" className="form-control" id='title' value={this.state.activeItem.title} name='title' placeholder='Enter Task' />
                 </div>
                 <div  style={{flex: 1}} >
-                  <input type="submit" className="btn btn-outline-warning" id='submit' name='add' />
+                  <input type="submit" className="btn btn-outline-warning" id='submit' name='add' value='Add Task' />
                 </div>
               </div>
             </form>
