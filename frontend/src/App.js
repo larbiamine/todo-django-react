@@ -26,6 +26,7 @@ class App extends React.Component {
 
   componentWillMount(){
     this.fetchTasks()
+    document.title = "Todo List"
   }
 
   fetchTasks(){
