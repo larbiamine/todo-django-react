@@ -30,7 +30,7 @@ class App extends React.Component {
 
   fetchTasks(){
    console.log("fetching");
-   fetch('https://listodoo.herokuapp.com/api/task-list')
+   fetch('http://listodoo.herokuapp.com/api/task-list')
    .then(response => response.json())
    .then(data =>  
     this.setState({
