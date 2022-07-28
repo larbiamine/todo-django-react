@@ -25,7 +25,7 @@ class App extends React.Component {
   };
 
   componentWillMount(){
-    this.fetchTasks()
+   // this.fetchTasks()
   }
 
   fetchTasks(){
