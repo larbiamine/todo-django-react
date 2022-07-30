@@ -6,13 +6,13 @@ class Userauth extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      logged: false,
       status : true,
       login: true,
       logincred:{
         username: "",
         password: ""
       }
-
     }
     this.register = this.register.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,15 +61,17 @@ class Userauth extends React.Component {
     .then(response => response.json())
     .then(data =>{
       if (data == "noice"){
-        // redirect to main app
+        this.setState({
+          logged: true
+        })
       }else{
         this.setState({
           status: false
         })
       }
-      console.log("response ========= "+data);
+
     })
-    console.log("login cred",JSON.stringify(this.state.logincred));
+
   }
 
 
@@ -99,7 +101,12 @@ class Userauth extends React.Component {
 
 
   render() {
-    if (this.state.login === true) {
+    if (this.state.logged === true) {
+      return (<App/>)
+    }
+    else
+    {
+      if (this.state.login === true) {
       
       return (
         <div className="container">
@@ -129,6 +136,7 @@ class Userauth extends React.Component {
     }else{
       return (<Register/>)
     }
+  }
 
   }
 }

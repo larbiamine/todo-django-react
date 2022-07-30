@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 # from .serializers import TaskSerializer
 # from .models import Task
 # Create your views here.
@@ -32,9 +33,9 @@ def login(request):
     username = request.data['username']
     password = request.data['password']
     user = authenticate(request, username=username, password=password) 
-    print("username"+username)
-    print("pwd"+password)
+
     if user is not None:
+        auth_login(request._request, user)
         return Response( "noice" )
         pass
     else:
