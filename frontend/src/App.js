@@ -1,7 +1,9 @@
 import React  from 'react'
 import './App.css';
 
+import Userauth from './Userauth'; 
 
+var authh;
 
 class App extends React.Component {
   constructor(props){
@@ -13,7 +15,8 @@ class App extends React.Component {
         title: '',
         completed: false
       },
-      editing: false
+      editing: false,
+      auth: false
     }
     this.fetchTasks = this.fetchTasks.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,11 +25,29 @@ class App extends React.Component {
     this.deleteItem = this.deleteItem.bind(this);
     this.startEdit = this.startEdit.bind(this);
     this.setCompleted = this.setCompleted.bind(this);
+    this.userAuth = this.userAuth.bind(this);
   };
 
   componentWillMount(){
+    this.userAuth()
     this.fetchTasks()
     document.title = "Todo List"
+    
+  }
+
+  userAuth(){
+    // check if user is auth
+    console.log("check if user is auth func");
+    fetch('http://127.0.0.1:8000/userapi/isauth/')
+    .then(response => response.json())
+    .then(data =>   {
+      this.setState({
+        auth: data
+      })
+      console.log("first: ",data);
+    }   
+    );
+    console.log("second: ",this.state.auth);
   }
 
   fetchTasks(){
@@ -141,7 +162,63 @@ class App extends React.Component {
   render() {
     var tasks = this.state.todoList
     var self = this
+    
+    if (this.state.auth == true) {
+      return (
+        <div className="container">
+          <div id="task-container">
+  
+            <div id="form-wrapper">
+              <form onSubmit={this.handleSubmit} action="" id="form">
+                <div className="flex-wrapper">
+                  <div  style={{flex: 6}} >
+                    <input onChange={this.handleChange} type="text" className="form-control" id='title' value={this.state.activeItem.title} name='title' placeholder='Enter Task' />
+                  </div>
+                  <div  style={{flex: 1}} >
+                    <input type="submit" className="btn btn-outline-warning" id='submit' name='add' value='Add Task' />
+                  </div>
+                </div>
+              </form>
+            </div>
+  
+            <div id="list-wrapper">
+              {tasks.map(function(task, index){
+                return(
+                  <div key={index} className='task-wrapper flex-wrapper'>
+                    <div onClick={() => {self.setCompleted(task)}} style={{flex:7}} >
+                      {task.completed === false ? (
+                        <span>
+                          {task.title}
+                        </span>
+                      ) : (
+                        <strike>
+                          {task.title}
+                        </strike>
+                      )}
+  
+                    </div>
+                    <div style={{flex:1}} >
+                      <button onClick={() => self.startEdit(task)} className="btn btn-outline-info">Edit</button>
+                    </div>
+                    <div style={{flex:1}} >
+                      <button onClick={ () => self.deleteItem(task) } className="btn btn-outline-dark">-</button>
+                    </div>
+  
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+        
+        // ,<Userauth/>
+      )
+    }else{
+      return (<Userauth/>)
+    }
+
     return (
+      
       <div className="container">
         <div id="task-container">
 
@@ -187,7 +264,10 @@ class App extends React.Component {
           </div>
         </div>
       </div>
+      
+      // ,<Userauth/>
     )
+
   }
 }
 
