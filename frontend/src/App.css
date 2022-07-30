@@ -8,6 +8,17 @@ body{
   border-color: #65446B !important;
   
 }
+
+.btn-warning{
+  color: white !important ;
+  background-color: #65446B !important;
+  border-color: #65446B !important;
+}
+
+.btn-warning:hover{
+  background-color: #77497e !important;
+}
+
 .btn-outline-warning:hover, .btn-outline-info:hover{
   color: #f0f0f0 !important ;
   background-color: #65446B !important;

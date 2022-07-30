@@ -3,7 +3,7 @@ import './App.css';
 
 import Userauth from './Userauth'; 
 
-var authh;
+
 
 class App extends React.Component {
   constructor(props){
@@ -163,7 +163,7 @@ class App extends React.Component {
     var tasks = this.state.todoList
     var self = this
     
-    if (this.state.auth == true) {
+    if (this.state.auth === true) {
       return (
         <div className="container">
           <div id="task-container">
@@ -217,57 +217,7 @@ class App extends React.Component {
       return (<Userauth/>)
     }
 
-    return (
-      
-      <div className="container">
-        <div id="task-container">
-
-          <div id="form-wrapper">
-            <form onSubmit={this.handleSubmit} action="" id="form">
-              <div className="flex-wrapper">
-                <div  style={{flex: 6}} >
-                  <input onChange={this.handleChange} type="text" className="form-control" id='title' value={this.state.activeItem.title} name='title' placeholder='Enter Task' />
-                </div>
-                <div  style={{flex: 1}} >
-                  <input type="submit" className="btn btn-outline-warning" id='submit' name='add' value='Add Task' />
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div id="list-wrapper">
-            {tasks.map(function(task, index){
-              return(
-                <div key={index} className='task-wrapper flex-wrapper'>
-                  <div onClick={() => {self.setCompleted(task)}} style={{flex:7}} >
-                    {task.completed === false ? (
-                      <span>
-                        {task.title}
-                      </span>
-                    ) : (
-                      <strike>
-                        {task.title}
-                      </strike>
-                    )}
-
-                  </div>
-                  <div style={{flex:1}} >
-                    <button onClick={() => self.startEdit(task)} className="btn btn-outline-info">Edit</button>
-                  </div>
-                  <div style={{flex:1}} >
-                    <button onClick={ () => self.deleteItem(task) } className="btn btn-outline-dark">-</button>
-                  </div>
-
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-      
-      // ,<Userauth/>
-    )
-
+    
   }
 }
 
