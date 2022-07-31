@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 # from .serializers import TaskSerializer
 # from .models import Task
 # Create your views here.
@@ -20,10 +21,9 @@ def apiOverview(request):
 @api_view(['GET'])
 def current_user(request):
     user = request.user
-    return Response({
-      'username' : user.username,
-
-    })
+    return Response(
+      user.username
+    )
 
 
 @api_view(['POST'])
@@ -39,7 +39,32 @@ def login(request):
         return Response( "noice" )
         pass
     else:
-        # No backend authenticated the credentials
+
+        return Response( "not noice" )
+
+@api_view(['POST'])
+def logout(request):
+    auth_logout(request)
+    return Response( "logged out" )
+
+@api_view(['POST'])
+def register(request):
+    print("request ============")
+    print(request.data)
+
+    username = request.data['username']
+    password = request.data['password']
+    email = request.data['email']
+
+    user = User.objects.create_user(username, email, password)
+    user.save()
+
+    if user is not None:
+        
+        return Response( "noice" )
+        pass
+    else:
+
         return Response( "not noice" )
 
 

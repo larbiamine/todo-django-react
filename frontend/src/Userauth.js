@@ -1,7 +1,7 @@
 import React from 'react'
 import Register from './Register'; 
 import App from './App'; 
-import { useNavigate } from "react-router-dom";
+
 class Userauth extends React.Component {
   constructor(props){
     super(props);
@@ -24,7 +24,7 @@ class Userauth extends React.Component {
   handleChange(e){
 
     var value = e.target.value
-    if(e.target.name == "username"){
+    if(e.target.name === "username"){
       this.setState({
         logincred : {
           
@@ -60,7 +60,7 @@ class Userauth extends React.Component {
     
     .then(response => response.json())
     .then(data =>{
-      if (data == "noice"){
+      if (data === "noice"){
         this.setState({
           logged: true
         })

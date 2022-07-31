@@ -89,3 +89,10 @@ margin-left: 10px;
 strike{
   color: green;
 }
+
+.purple{
+  color: #65446B !important;
+}
+.inline{
+  display:inline
+}

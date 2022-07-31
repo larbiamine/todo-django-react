@@ -1,9 +1,7 @@
 import React  from 'react'
 import './App.css';
-
+import Navibar from './Navibar'; 
 import Userauth from './Userauth'; 
-
-
 
 class App extends React.Component {
   constructor(props){
@@ -16,7 +14,8 @@ class App extends React.Component {
         completed: false
       },
       editing: false,
-      auth: false
+      auth: false,
+      username: ''
     }
     this.fetchTasks = this.fetchTasks.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,13 +25,14 @@ class App extends React.Component {
     this.startEdit = this.startEdit.bind(this);
     this.setCompleted = this.setCompleted.bind(this);
     this.userAuth = this.userAuth.bind(this);
+    this.getUsername = this.getUsername.bind(this);
   };
 
-  componentWillMount(){
-    this.userAuth()
-    this.fetchTasks()
-    document.title = "Todo List"
-    
+  async componentWillMount(){
+    await this.userAuth()
+    await this.getUsername()
+    await this.fetchTasks()
+    document.title = "Todo List"  
   }
 
   userAuth(){
@@ -43,15 +43,24 @@ class App extends React.Component {
     .then(data =>   {
       this.setState({
         auth: data
+        //auth: true
       })
-      console.log("first: ",data);
     }   
     );
-    console.log("second: ",this.state.auth);
+  }
+
+  getUsername(){
+    fetch('http://127.0.0.1:8000/userapi/user/')
+    .then(response => response.json())
+    .then(data =>   {
+      this.setState({
+        username: data
+      })
+    }   
+    );
   }
 
   fetchTasks(){
-   console.log("fetching");
    fetch('https://listodoo.herokuapp.com/api/task-list')
    .then(response => response.json())
    .then(data =>  
@@ -165,9 +174,11 @@ class App extends React.Component {
     
     if (this.state.auth === true) {
       return (
+        <>
+        <Navibar username = {self.state.username} /> 
+        
         <div className="container">
           <div id="task-container">
-  
             <div id="form-wrapper">
               <form onSubmit={this.handleSubmit} action="" id="form">
                 <div className="flex-wrapper">
@@ -184,7 +195,7 @@ class App extends React.Component {
             <div id="list-wrapper">
               {tasks.map(function(task, index){
                 return(
-                  <div key={index} className='task-wrapper flex-wrapper'>
+                  <div key={index} className='ml-4 task-wrapper flex-wrapper'>
                     <div onClick={() => {self.setCompleted(task)}} style={{flex:7}} >
                       {task.completed === false ? (
                         <span>
@@ -209,15 +220,12 @@ class App extends React.Component {
               })}
             </div>
           </div>
-        </div>
-        
-        // ,<Userauth/>
+        </div> 
+      </> 
       )
     }else{
       return (<Userauth/>)
     }
-
-    
   }
 }
 
