@@ -61,11 +61,15 @@ import App from './App';
             <Container>
               <Navbar.Brand href="#home">Your Todo List</Navbar.Brand>
               <Nav className="me-auto">
+                {this.props.auth === false ? (
+                  <></>
+                ) : (
+                <>
                 <Navbar.Text>
                   Hello <a>{this.props.username}</a>  
                 </Navbar.Text>
                 <Button onClick={this.logout} variant="outline-danger" size="sm">LOGOUT</Button>
-
+                </>  )}
               </Nav>
             </Container>
           </Navbar>

@@ -21,9 +21,9 @@ def apiOverview(request):
 
 @api_view(['GET'])
 def taskList(request):
-    tasks = Task.objects.all()
+    # tasks = Task.objects.all()
+    tasks = request.user.todolist.all()
     serializer = TaskSerializer(tasks, many = True)
-    
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -35,12 +35,19 @@ def taskDetail(request, pk):
 
 @api_view(['POST'])
 def taskCreate(request):
-    serializer = TaskSerializer(data = request.data)
-    
-    if serializer.is_valid():
-        serializer.save( )
-    
-    return Response(serializer.data)
+
+    # title = request.POST['title']
+    title = request.data['title']
+    completed = request.data['completed']
+    # completed = request.POST['completed']
+    t = Task(
+        title=title, 
+        completed=completed
+        )
+    t.save()
+    request.user.todolist.add(t)
+
+    return Response(request.data)
 
 @api_view(['POST'])
 def taskUpdate(request, pk):

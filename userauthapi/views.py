@@ -28,8 +28,7 @@ def current_user(request):
 
 @api_view(['POST'])
 def login(request):
-    print("request ============")
-    print(request.data)
+
     username = request.data['username']
     password = request.data['password']
     user = authenticate(request, username=username, password=password) 
@@ -49,13 +48,9 @@ def logout(request):
 
 @api_view(['POST'])
 def register(request):
-    print("request ============")
-    print(request.data)
-
     username = request.data['username']
     password = request.data['password']
     email = request.data['email']
-
     user = User.objects.create_user(username, email, password)
     user.save()
 

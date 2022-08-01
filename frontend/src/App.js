@@ -61,7 +61,8 @@ class App extends React.Component {
   }
 
   fetchTasks(){
-   fetch('https://listodoo.herokuapp.com/api/task-list')
+  //  fetch('https://listodoo.hserokuapp.com/api/task-list')
+   fetch('http://127.0.0.1:8000/api/task-list')
    .then(response => response.json())
    .then(data =>  
     this.setState({
@@ -100,7 +101,8 @@ class App extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     var csrfToken = this.getCookie('csrftoken')
-    var url = 'https://listodoo.herokuapp.com/api/task-create/'
+    var url = 'http://127.0.0.1:8000/api/task-create/'
+    // var url = 'https://listodoo.herokuapp.com/api/task-create/'
 
     if(this.state.editing){
       url = `https://listodoo.herokuapp.com/api/task-update/${ this.state.activeItem.id }/`
@@ -224,7 +226,12 @@ class App extends React.Component {
       </> 
       )
     }else{
-      return (<Userauth/>)
+      return (
+        <>
+          <Navibar auth = {false} /> 
+          <Userauth/>
+        </>
+      )
     }
   }
 }
