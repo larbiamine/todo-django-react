@@ -1,4 +1,4 @@
-
+###Note : This is a work in progress.
 # Django/React Todo-List App
 
 This is a simple Todo application built off Django (including the Django REST Framework for API CRUD operations) and React.
