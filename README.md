@@ -1,4 +1,4 @@
-###Note : This is a work in progress.
+
 # Django/React Todo-List App
 
 This is a simple Todo application built off Django (including the Django REST Framework for API CRUD operations) and React.
@@ -12,3 +12,6 @@ This is a simple Todo application built off Django (including the Django REST Fr
 2. Install the requirements.txt dependencies using pip
 3. Navigate into the frontend directory
 4. Install the  dependencies using npm 
+
+### Note : This is a work in progress.
+#### To Do: implement user auth/Register
