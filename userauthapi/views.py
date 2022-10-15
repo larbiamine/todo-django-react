@@ -28,7 +28,6 @@ def current_user(request):
 
 @api_view(['POST'])
 def login(request):
-
     username = request.data['username']
     password = request.data['password']
     user = authenticate(request, username=username, password=password) 
@@ -55,9 +54,8 @@ def register(request):
     user.save()
 
     if user is not None:
-        
         return Response( "noice" )
-        pass
+
     else:
 
         return Response( "not noice" )

@@ -13,11 +13,11 @@ SECRET_KEY = 'django-insecure-^yc*nj6a-j*fze$*i^c@p=f)xa4p$m8$3rzm7@cg+bjt*58p4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',  'listodoo.herokuapp.com' ]
+ALLOWED_HOSTS = ['127.0.0.1',  'listodoo.herokuapp.com',"192.168.0.2" ]
 
 
 # Application definition
-
+  
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -144,4 +144,5 @@ CORS_ORIGIN_WHITELIST = [
     # "https://127.0.0.1:8000/",
     "http://127.0.0.1:3000",
     "http://localhost:3000",
+    
 ]  
