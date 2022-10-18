@@ -22,7 +22,6 @@ class Userauth extends React.Component {
   };
 
   handleChange(e){
-
     var value = e.target.value
     if(e.target.name === "username"){
       this.setState({

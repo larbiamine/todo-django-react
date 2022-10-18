@@ -21,10 +21,12 @@ def apiOverview(request):
 
 @api_view(['GET'])
 def taskList(request):
-    # tasks = Task.objects.all()
-    tasks = request.user.todolist.all()
-    serializer = TaskSerializer(tasks, many = True)
-    return Response(serializer.data)
+    if str(request.user) != "AnonymousUser":
+        # tasks = Task.objects.all()
+        tasks = request.user.todolist.all()
+        serializer = TaskSerializer(tasks, many = True)
+        return Response(serializer.data)
+    return Response("")
 
 @api_view(['GET'])
 def taskDetail(request, pk):
