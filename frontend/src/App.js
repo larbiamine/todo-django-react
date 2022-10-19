@@ -105,6 +105,7 @@ class App extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     var csrfToken = this.getCookie('csrftoken')
+    
     var url = 'https://listodoo.herokuapp.com/api/task-create/'
     // var url = 'http://127.0.0.1:8000/api/task-create/'
 
