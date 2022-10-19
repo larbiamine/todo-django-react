@@ -39,15 +39,13 @@ class Userauth extends React.Component {
         },
       })
     }
-    console.log("state", this.state);
-
   }
 
   handleSubmit(e){
     e.preventDefault()
     var csrfToken = this.getCookie('csrftoken')
     var url = 'http://127.0.0.1:8000/userapi/login/'
-
+    
     fetch(url,{
       method : 'POST',
       headers : {
@@ -68,12 +66,8 @@ class Userauth extends React.Component {
           status: false
         })
       }
-
     })
-
   }
-
-
 
   register(){
     this.setState({
@@ -106,7 +100,6 @@ class Userauth extends React.Component {
     else
     {
       if (this.state.login === true) {
-      
       return (
         <div className="container">
           <div id="task-container">

@@ -35,7 +35,7 @@ def login(request):
     if user is not None:
         auth_login(request._request, user)
         return Response( "noice" )
-        pass
+        
     else:
 
         return Response( "not noice" )
@@ -54,10 +54,11 @@ def register(request):
     user.save()
 
     if user is not None:
+        user = authenticate(request, username=username, password=password) 
+        if user is not None:
+            auth_login(request._request, user)
         return Response( "noice" )
-
     else:
-
         return Response( "not noice" )
 
 

@@ -37,7 +37,6 @@ class App extends React.Component {
 
   userAuth(){
     // check if user is auth
-    console.log("check if user is auth func");
     fetch('http://127.0.0.1:8000/userapi/isauth/')
     .then(response => response.json())
     .then(data =>   {
@@ -105,7 +104,8 @@ class App extends React.Component {
     // var url = 'https://listodoo.herokuapp.com/api/task-create/'
 
     if(this.state.editing){
-      url = `https://listodoo.herokuapp.com/api/task-update/${ this.state.activeItem.id }/`
+      // url = `https://listodoo.herokuapp.com/api/task-update/${ this.state.activeItem.id }/`
+      url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id }/`
       this.setState({
         editing: false
       })
@@ -143,7 +143,7 @@ class App extends React.Component {
 
   deleteItem(task){
     var csrfToken = this.getCookie('csrftoken')
-    fetch(`https://listodoo.herokuapp.com/api/task-delete/${ task.id }/`,{
+    fetch(`http://127.0.0.1:8000/api/task-delete/${ task.id }/`,{
       method: "DELETE",
       headers: {
         'Content-type' : 'application/json',
@@ -157,7 +157,7 @@ class App extends React.Component {
   setCompleted(task){
     task.completed = !task.completed
     var csrfToken = this.getCookie('csrftoken')
-    var url = `https://listodoo.herokuapp.com/api/task-update/${ task.id }/`
+    var url = `http://127.0.0.1:8000/api/task-update/${ task.id }/`
     fetch(url, {
       method: 'POST',
       headers: {
