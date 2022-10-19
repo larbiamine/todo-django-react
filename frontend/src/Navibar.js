@@ -50,7 +50,7 @@ import App from './App';
         
   
       })
-      // window.location.reload(false);
+      window.location.reload(false);
     }
     render (){
       if (this.state.logged === true) {
@@ -76,7 +76,8 @@ import App from './App';
         </>
       )
     }else{
-      return(<></>)
+      return (<App auth = {false} />)
+
     }
   }
 }  

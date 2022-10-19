@@ -26,6 +26,7 @@ class App extends React.Component {
     this.setCompleted = this.setCompleted.bind(this);
     this.userAuth = this.userAuth.bind(this);
     this.getUsername = this.getUsername.bind(this);
+    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
   };
 
   async componentWillMount(){
@@ -140,6 +141,9 @@ class App extends React.Component {
       editing: true
     })
   }
+  forceUpdateHandler(){
+    this.forceUpdate() 
+  }
 
   deleteItem(task){
     var csrfToken = this.getCookie('csrftoken')
@@ -226,6 +230,10 @@ class App extends React.Component {
       </> 
       )
     }else{
+      this.forceUpdateHandler();
+      this.setState({
+        auth: false
+      })
       return (
         <>
           <Navibar auth = {false} /> 
