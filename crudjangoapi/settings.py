@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-^yc*nj6a-j*fze$*i^c@p=f)xa4p$m8$3rzm7@cg+bjt*58p4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',  'listodoo.herokuapp.com',"192.168.0.2" ]
+ALLOWED_HOSTS = ['127.0.0.1',  'listodoo.herokuapp.com']
 
 
 # Application definition
@@ -140,9 +140,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ORIGIN_WHITELIST = [
     "https://listodoo.herokuapp.com",
-    # "http://127.0.0.1:8000/",
-    # "https://127.0.0.1:8000/",
-    # "http://127.0.0.1:3000",
-    # "http://localhost:3000",
-    
-]  
+    "http://127.0.0.1:8000/",
+    "https://127.0.0.1:8000/",
+] 
