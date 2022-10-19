@@ -44,7 +44,8 @@ class Userauth extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     var csrfToken = this.getCookie('csrftoken')
-    var url = 'http://127.0.0.1:8000/userapi/login/'
+    // var url = 'http://127.0.0.1:8000/userapi/login/'
+    var url = 'https://listodoo.herokuapp.com/userapi/login/'
     
     fetch(url,{
       method : 'POST',

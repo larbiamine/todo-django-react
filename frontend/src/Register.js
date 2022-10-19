@@ -78,7 +78,9 @@ class Register extends React.Component {
     if(this.state.passwordError === "" && this.validate()){    
       e.preventDefault()
       var csrfToken = this.getCookie('csrftoken')
-      var url = 'http://127.0.0.1:8000/userapi/register/'
+      // var url = 'http://127.0.0.1:8000/userapi/register/'
+      var url = 'https://listodoo.herokuapp.com/userapi/register/'
+      
       
       fetch(url,{
         method : 'POST',

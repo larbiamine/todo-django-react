@@ -38,7 +38,10 @@ class App extends React.Component {
 
   userAuth(){
     // check if user is auth
-    fetch('http://127.0.0.1:8000/userapi/isauth/')
+    // var url = 'http://127.0.0.1:8000/userapi/isauth/'
+    var url = 'https://listodoo.herokuapp.com/userapi/isauth/'
+
+    fetch(url)
     .then(response => response.json())
     .then(data =>   {
       this.setState({
@@ -50,7 +53,8 @@ class App extends React.Component {
   }
 
   getUsername(){
-    fetch('http://127.0.0.1:8000/userapi/user/')
+    // fetch('http://127.0.0.1:8000/userapi/user/')
+    fetch('https://listodoo.herokuapp.com/userapi/user/')
     .then(response => response.json())
     .then(data =>   {
       this.setState({
@@ -61,8 +65,8 @@ class App extends React.Component {
   }
 
   fetchTasks(){
-  //  fetch('https://listodoo.hserokuapp.com/api/task-list')
-   fetch('http://127.0.0.1:8000/api/task-list')
+   fetch('https://listodoo.hserokuapp.com/api/task-list')
+  //  fetch('http://127.0.0.1:8000/api/task-list')
    .then(response => response.json())
    .then(data =>  
     this.setState({
@@ -101,12 +105,12 @@ class App extends React.Component {
   handleSubmit(e){
     e.preventDefault()
     var csrfToken = this.getCookie('csrftoken')
-    var url = 'http://127.0.0.1:8000/api/task-create/'
-    // var url = 'https://listodoo.herokuapp.com/api/task-create/'
+    var url = 'https://listodoo.herokuapp.com/api/task-create/'
+    // var url = 'http://127.0.0.1:8000/api/task-create/'
 
     if(this.state.editing){
-      // url = `https://listodoo.herokuapp.com/api/task-update/${ this.state.activeItem.id }/`
-      url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id }/`
+      // url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id }/`
+      url = `https://listodoo.herokuapp.com/api/task-update/${ this.state.activeItem.id }/`
       this.setState({
         editing: false
       })
@@ -147,7 +151,8 @@ class App extends React.Component {
 
   deleteItem(task){
     var csrfToken = this.getCookie('csrftoken')
-    fetch(`http://127.0.0.1:8000/api/task-delete/${ task.id }/`,{
+    // fetch(`http://127.0.0.1:8000/api/task-delete/${ task.id }/`,{
+    fetch(`https://listodoo.herokuapp.com/api/task-delete/${ task.id }/`,{
       method: "DELETE",
       headers: {
         'Content-type' : 'application/json',
@@ -161,7 +166,8 @@ class App extends React.Component {
   setCompleted(task){
     task.completed = !task.completed
     var csrfToken = this.getCookie('csrftoken')
-    var url = `http://127.0.0.1:8000/api/task-update/${ task.id }/`
+    // var url = `http://127.0.0.1:8000/api/task-update/${ task.id }/`
+    var url = `https://listodoo.herokuapp.com/api/task-update/${ task.id }/`
     fetch(url, {
       method: 'POST',
       headers: {
