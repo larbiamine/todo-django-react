@@ -32,7 +32,8 @@ import App from './App';
     async logout(e){
       e.preventDefault()
       var csrfToken = this.getCookie('csrftoken')
-      var url = 'http://127.0.0.1:8000/userapi/logout/'
+      // var url = 'http://127.0.0.1:8000/userapi/logout/'
+      var url = 'https://listodoo.herokuapp.com/userapi/logout/'
     
       await fetch(url,{
         method : 'POST',
