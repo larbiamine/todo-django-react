@@ -71,20 +71,20 @@ WSGI_APPLICATION = 'crudjangoapi.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': "d725fnmp97uiec",
-    #     'USER': 'wdmnncvdlpmdit',
-    #     'PASSWORD' : '8f8b70935bc06a26c96a9713085521028f658f8b0e2ef7b648bac26e40617a38',
-    #     'HOST' : 'ec2-44-208-88-195.compute-1.amazonaws.com'
-    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "todo",
-        'USER': 'postgres',
-        'PASSWORD' : '1234',
-        'HOST' : 'localhost'
+        'NAME': "d725fnmp97uiec",
+        'USER': 'wdmnncvdlpmdit',
+        'PASSWORD' : '8f8b70935bc06a26c96a9713085521028f658f8b0e2ef7b648bac26e40617a38',
+        'HOST' : 'ec2-44-208-88-195.compute-1.amazonaws.com'
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': "todo",
+    #     'USER': 'postgres',
+    #     'PASSWORD' : '1234',
+    #     'HOST' : 'localhost'
+    # }
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
