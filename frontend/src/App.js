@@ -65,7 +65,7 @@ class App extends React.Component {
   }
 
   fetchTasks(){
-   fetch('https://listodoo.hserokuapp.com/api/task-list')
+   fetch('https://listodoo.herokuapp.com/api/task-list')
   //  fetch('http://127.0.0.1:8000/api/task-list')
    .then(response => response.json())
    .then(data =>  
