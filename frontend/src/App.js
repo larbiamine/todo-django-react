@@ -32,7 +32,7 @@ class App extends React.Component {
   async componentWillMount(){
     await this.userAuth()
     await this.getUsername()
-    await this.fetchTasks()
+    // await this.fetchTasks()
     document.title = "Todo List"  
   }
 
