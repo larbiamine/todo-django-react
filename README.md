@@ -3,6 +3,8 @@
 
 This is a simple Todo application built off Django (including the Django REST Framework for API CRUD operations) and React.
 
+Currently hosted at: https://listodoo.herokuapp.com/
+
 ## Requirements
 * Python3 / Django
 * NodeJS / React
